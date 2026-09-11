@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://serdarbozoglan.github.io/web_popoverscafe/sitemap.xml
