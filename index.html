@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Popovers Café</title>
+<meta name="description" content="Popovers Café, downtown Apex, NC — sweet and savory popovers baked fresh every morning, house-made butters and jams, pourover coffee and Turkish tea. Open daily 7am–3pm at 219 N Salem St.">
+<meta property="og:title" content="Popovers Café — Apex, NC">
+<meta property="og:description" content="Sweet and savory popovers, baked fresh every morning in downtown Apex. Come pop in.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://popoverscafe.com/">
+<meta name="theme-color" content="#4A316B">
+<link rel="canonical" href="https://popoverscafe.com/">
+<link rel="icon" href="images/logo.jpg">
+<link rel="apple-touch-icon" href="images/logo.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "Popovers Café",
+  "url": "https://popoverscafe.com",
+  "telephone": "+1-984-220-1577",
+  "email": "mustafa@popoverscafe.com",
+  "servesCuisine": ["Bakery", "Breakfast", "Coffee & Tea"],
+  "address": {"@type": "PostalAddress", "streetAddress": "219 N Salem St, Suite 103", "addressLocality": "Apex", "addressRegion": "NC", "postalCode": "27502", "addressCountry": "US"},
+  "geo": {"@type": "GeoCoordinates", "latitude": 35.7323028, "longitude": -78.8509711},
+  "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "07:00", "closes": "15:00"}],
+  "sameAs": ["https://www.instagram.com/popoverscafe/"]
+}
+</script>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Karla:wght@400;500;600;700&display=swap">
+<style>
+/* ============ Tokens — plum & gold, light first ============ */
+:root{
+  --plum:#4A316B;--plum-deep:#382450;--plum-ink:#2C1D42;
+  --gold:#B98A3E;--gold-bright:#C6994B;--gold-deep:#7A5A18;
+  --paper:#F4EFE7;--paper-2:#FCFAF5;--paper-3:#EBE4D6;
+  --ink:#2C2333;--ink-soft:#655B71;--ink-faint:#6E6380;
+  --ok:#5E7D57;
+  --line:rgba(44,35,51,0.14);--line-2:rgba(44,35,51,0.08);
+  --shadow:0 30px 70px -30px rgba(50,30,72,0.35);
+  --grain:0.5;
+  --on-plum:#F3ECF8;--on-plum-soft:#CDBFDC;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --plum:#B79AE0;--plum-deep:#12081F;--plum-ink:#1B1030;
+    --gold:#D8AC52;--gold-bright:#E4BA63;--gold-deep:#D8AC52;
+    --paper:#191026;--paper-2:#241834;--paper-3:#2F2242;
+    --ink:#F1EAF7;--ink-soft:#B9ACC9;--ink-faint:#897C9B;
+    --ok:#89B27F;
+    --line:rgba(241,234,247,0.16);--line-2:rgba(241,234,247,0.09);
+    --shadow:0 30px 70px -30px rgba(0,0,0,0.7);
+    --grain:0.85;
+    --on-plum:#F3ECF8;--on-plum-soft:#CDBFDC;
+  }
+}
+:root[data-theme="dark"]{
+  --plum:#B79AE0;--plum-deep:#12081F;--plum-ink:#1B1030;
+  --gold:#D8AC52;--gold-bright:#E4BA63;--gold-deep:#D8AC52;
+  --paper:#191026;--paper-2:#241834;--paper-3:#2F2242;
+  --ink:#F1EAF7;--ink-soft:#B9ACC9;--ink-faint:#897C9B;
+  --ok:#89B27F;
+  --line:rgba(241,234,247,0.16);--line-2:rgba(241,234,247,0.09);
+  --shadow:0 30px 70px -30px rgba(0,0,0,0.7);
+  --grain:0.85;
+  --on-plum:#F3ECF8;--on-plum-soft:#CDBFDC;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Karla",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.menu-open{overflow:hidden}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3{font-family:"Fraunces","Georgia",serif;font-weight:400;line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-0.02em}
+p{margin:0}a{color:inherit}
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:var(--grain);mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
+:root[data-theme="dark"] .grain,:root:not([data-theme="light"]) .grain{mix-blend-mode:screen}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+.eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.24em;color:var(--gold-deep)}
+.rule{border:0;border-top:1px solid var(--line);margin:0}
+.sec{padding:clamp(72px,9vw,120px) 0}
+.sec-head{max-width:640px}
+.sec-head h2{font-size:clamp(34px,4.8vw,60px);margin-top:14px}
+.sec-head p{margin-top:16px;color:var(--ink-soft);font-size:18px;max-width:58ch}
+
+/* text links with arrow */
+.tlink{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);padding:6px 0;border-bottom:1.5px solid var(--gold);transition:gap .35s cubic-bezier(.32,.72,0,1)}
+.tlink:hover{gap:16px}
+.tlink.primary{color:var(--plum);border-bottom-color:var(--plum)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--paper-2);cursor:pointer;font-family:inherit;transition:transform .35s cubic-bezier(.32,.72,0,1),background .3s,border-color .3s}
+.btn:hover{transform:translateY(-1px);border-color:var(--gold)}
+.btn.solid{background:var(--plum);color:#fff;border-color:transparent}
+.btn.solid:hover{background:var(--plum-deep)}
+:root[data-theme="dark"] .btn.solid,:root:not([data-theme="light"]) .btn.solid{color:var(--plum-ink)}
+
+/* ===== Nav ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:16px}
+.nav-inner{display:flex;align-items:center;gap:18px;background:color-mix(in srgb,var(--paper-2) 78%,transparent);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--line);border-radius:999px;padding:7px 8px 7px 10px;transition:transform .7s cubic-bezier(.32,.72,0,1)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{width:36px;height:36px;border-radius:50%}
+.brand b{font-family:"Fraunces",serif;font-weight:500;font-size:18px;letter-spacing:-0.02em;white-space:nowrap;color:var(--ink)}
+.nav-links{display:flex;gap:2px;align-items:center}
+.nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--ink-soft);padding:9px 13px;border-radius:999px;transition:color .3s,background .3s}
+.nav-links a:hover{color:var(--ink);background:var(--paper-3)}
+.icon-btn{background:var(--paper-3);border:1px solid var(--line);width:40px;height:40px;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:var(--ink);flex:none;position:relative}
+.nav-cta{text-decoration:none;font-size:14px;font-weight:600;color:#fff;background:var(--plum);display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;white-space:nowrap}
+:root[data-theme="dark"] .nav-cta,:root:not([data-theme="light"]) .nav-cta{color:var(--plum-ink)}
+.hamburger{display:none}
+.hamburger span{position:absolute;left:50%;top:50%;width:16px;height:1.6px;background:currentColor;border-radius:2px;transition:transform .5s cubic-bezier(.32,.72,0,1),opacity .3s}
+.hamburger span:nth-child(1){transform:translate(-50%,-5px)}
+.hamburger span:nth-child(2){transform:translate(-50%,0)}
+.hamburger span:nth-child(3){transform:translate(-50%,5px)}
+body.menu-open .hamburger span:nth-child(1){transform:translate(-50%,0) rotate(45deg)}
+body.menu-open .hamburger span:nth-child(2){opacity:0}
+body.menu-open .hamburger span:nth-child(3){transform:translate(-50%,0) rotate(-45deg)}
+.mobile-overlay{position:fixed;inset:0;z-index:45;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:0 34px;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(28px) saturate(1.3);-webkit-backdrop-filter:blur(28px) saturate(1.3);opacity:0;visibility:hidden;transition:opacity .5s cubic-bezier(.32,.72,0,1),visibility .5s}
+body.menu-open .mobile-overlay{opacity:1;visibility:visible}
+.mobile-overlay a{text-decoration:none;color:var(--ink);font-family:"Fraunces",serif;font-size:clamp(30px,7.6vw,48px);line-height:1.2;padding:6px 0;opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.32,.72,0,1),transform .6s cubic-bezier(.32,.72,0,1)}
+body.menu-open .mobile-overlay a{opacity:1;transform:none}
+body.menu-open .mobile-overlay a:nth-child(2){transition-delay:.06s}
+body.menu-open .mobile-overlay a:nth-child(3){transition-delay:.12s}
+body.menu-open .mobile-overlay a:nth-child(4){transition-delay:.18s}
+.mobile-overlay .foot{margin-top:30px;font-size:15px;color:var(--ink-soft)}
+
+/* ===== Hero — editorial split, photo bleeds to the right edge ===== */
+.hero{padding:132px 0 0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,56px);align-items:end}
+.hero h1{font-size:clamp(64px,10.5vw,152px);font-weight:300;letter-spacing:-0.045em;line-height:.92;margin-top:18px}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--plum)}
+.hero-sub{margin-top:26px;font-size:19px;color:var(--ink-soft);max-width:34ch}
+.hero-actions{margin-top:30px;display:flex;gap:28px;flex-wrap:wrap;align-items:center}
+.hero-meta{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft);display:flex;gap:22px;flex-wrap:wrap}
+.hero-meta b{color:var(--ink);font-weight:600}
+.hero-art{position:relative;margin-right:calc(50% - 50vw);overflow:hidden;border-radius:22px 0 0 22px}
+.hero-art img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/2;max-height:700px}
+.hero-cap{position:absolute;left:18px;bottom:16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(20,10,30,.42);backdrop-filter:blur(6px);padding:7px 11px;border-radius:999px}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes photoIn{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:none}}
+.hero .a1{animation:rise .8s cubic-bezier(.32,.72,0,1) .05s both}
+.hero .a2{animation:rise .9s cubic-bezier(.32,.72,0,1) .15s both}
+.hero .a3{animation:rise .9s cubic-bezier(.32,.72,0,1) .28s both}
+.hero .a4{animation:rise .9s cubic-bezier(.32,.72,0,1) .38s both}
+.hero-art{animation:photoIn 1.2s cubic-bezier(.32,.72,0,1) .1s both}
+
+/* ===== The board ===== */
+.board-feats{display:grid;grid-template-columns:1.1fr 1fr;grid-template-rows:auto auto;gap:18px;margin-top:48px}
+.feat{position:relative;overflow:hidden;border-radius:18px;background:var(--paper-3)}
+.feat img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.32,.72,0,1)}
+.feat:hover img{transform:scale(1.03)}
+.feat.tall{grid-row:span 2}
+.feat.tall img{aspect-ratio:4/5}
+.feat.wide img{aspect-ratio:16/10}
+.feat .lab{position:absolute;left:16px;bottom:14px;right:16px;color:#fff;display:flex;justify-content:space-between;align-items:baseline;gap:12px;text-shadow:0 1px 14px rgba(0,0,0,.5)}
+.feat .lab b{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(22px,2.4vw,30px);letter-spacing:-0.01em}
+.feat .lab span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+.feat::after{content:"";position:absolute;inset:auto 0 0 0;height:46%;background:linear-gradient(to top,rgba(20,10,30,.62),transparent);pointer-events:none}
+.board{display:grid;grid-template-columns:5fr 6fr;gap:clamp(28px,5vw,64px);margin-top:44px;align-items:start}
+.stage-wrap{position:sticky;top:96px}
+#stage img{max-height:calc(100vh - 170px)}
+.menu-list{display:grid;gap:40px}
+.menu-col h3{font-size:14px;font-family:"Karla",sans-serif;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);padding-bottom:14px;border-bottom:1px solid var(--line)}
+.dish{display:grid;grid-template-columns:84px 1fr;gap:16px;align-items:start;padding:16px 0;border-bottom:1px solid var(--line-2)}
+button.dish{width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line-2);font:inherit;color:inherit;cursor:pointer;border-radius:12px;transition:background .25s}
+button.dish:hover{background:var(--paper-2)}
+.dish.is-active .n{color:var(--plum)}
+.dish.is-active img{outline:2px solid var(--gold);outline-offset:2px}
+#stageImg{transition:opacity .35s ease}
+.stage-hint{margin-top:14px;font-size:13px;color:var(--ink-faint)}
+html:not(.js) .stage-hint{display:none}
+.dish .big{display:none;grid-column:1/-1;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;margin-top:8px}
+.dish.open .big{display:block}
+.dish.open{background:var(--paper-2)}
+.dish.nopic{grid-template-columns:1fr;padding-left:100px}
+.dish img{width:84px;height:84px;object-fit:cover;border-radius:12px}
+.dish .tx{display:block;min-width:0}
+.dish .n{display:block;font-family:"Fraunces",serif;font-size:23px;line-height:1.1;letter-spacing:-0.01em}
+.dish .d{display:block;margin-top:5px;color:var(--ink-soft);font-size:15px;line-height:1.5;max-width:48ch}
+.menu-note{margin-top:34px;padding:22px 26px;border-left:2px solid var(--gold);color:var(--ink-soft);font-size:16px;max-width:64ch}
+.menu-note b{color:var(--ink);font-family:"Fraunces",serif;font-weight:500;font-size:19px;display:block;margin-bottom:6px}
+
+/* ===== Also on the board ===== */
+.also-head{max-width:640px}
+.also-head h2{font-size:clamp(34px,4.6vw,56px);margin-top:14px}
+.also-head p{margin-top:16px;color:var(--ink-soft);font-size:18px;max-width:58ch}
+.also-grid{display:grid;grid-template-columns:repeat(3,1fr) 1.15fr;gap:clamp(24px,3.5vw,48px);margin-top:48px;align-items:start}
+.also-col h3{font-size:13px;font-family:"Karla",sans-serif;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);padding-bottom:12px;border-bottom:1px solid var(--line)}
+.also-col h3.mt{margin-top:32px}
+.also-col ul{list-style:none;margin:0;padding:0}
+.also-col li{padding:10px 0;border-bottom:1px solid var(--line-2);font-family:"Fraunces",serif;font-size:18px;line-height:1.3}
+.also-col ul.desc li{display:grid;gap:3px}
+.also-col ul.desc b{font-weight:500}
+.also-col ul.desc span{font-family:"Karla",sans-serif;font-size:14px;color:var(--ink-soft);line-height:1.5}
+.also-note{margin-top:12px;font-size:13px;color:var(--ink-faint)}
+.also-pic{margin:0}
+.also-pic img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px}
+.also-pic figcaption{margin-top:9px;font-size:13px;color:var(--ink-faint);line-height:1.4}
+/* ===== Story ===== */
+.story{background:var(--paper-2)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+.seal{width:150px;height:150px;border-radius:30px;margin-bottom:30px;box-shadow:var(--shadow)}
+@media (max-width:560px){.seal{width:120px;height:120px;border-radius:24px}}
+.story h2{font-size:clamp(36px,4.8vw,58px)}
+.story .lead{font-family:"Fraunces",serif;font-size:clamp(20px,2vw,24px);line-height:1.42;margin-top:26px;font-weight:300}
+.story .copy{margin-top:18px;color:var(--ink-soft);font-size:17px;max-width:60ch}
+.story .copy+.copy{margin-top:14px}
+.quote{margin:30px 0 0;padding-left:20px;border-left:2px solid var(--gold);font-family:"Fraunces",serif;font-style:italic;font-size:22px;line-height:1.35}
+.quote cite{display:block;font-style:normal;font-family:"Karla",sans-serif;font-size:13px;color:var(--ink-faint);margin-top:10px;letter-spacing:.06em}
+.story-pics{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.story-pics figure{margin:0}
+.story-pics img{width:100%;border-radius:16px;object-fit:cover}
+.story-pics figure:first-child img{aspect-ratio:4/5}
+.story-pics figure:last-child{margin-top:44px}
+.story-pics figure:last-child img{aspect-ratio:4/5}
+.story-pics figcaption{margin-top:9px;font-size:13px;color:var(--ink-faint);line-height:1.4}
+
+/* ===== Room — plum band ===== */
+.room{background:var(--plum-deep);color:var(--on-plum);overflow:hidden}
+.room-grid{display:grid;grid-template-columns:5fr 6fr;gap:clamp(28px,5vw,72px);align-items:center}
+.room img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;max-height:640px}
+.room .eyebrow{color:var(--gold-bright)}
+.room h2{font-size:clamp(36px,5vw,64px);margin-top:14px;font-weight:300;color:#fff}
+.room p{margin-top:20px;font-size:18px;color:var(--on-plum-soft);max-width:44ch}
+.room .tlink{color:#fff;border-bottom-color:var(--gold-bright);margin-top:28px}
+
+/* ===== Reviews — bento ===== */
+.voices-sub{margin-top:16px;color:var(--ink-soft);font-size:17px;max-width:46ch}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;align-items:stretch}
+.voice{background:var(--paper-2);border:1px solid var(--line);border-radius:20px;padding:26px 26px 22px;display:flex;flex-direction:column;transition:transform .6s cubic-bezier(.32,.72,0,1)}
+.voice:hover{transform:translateY(-3px)}
+.t-feat{grid-column:span 2;padding:32px 40px 28px 34px;position:relative}
+.t-feat::before{content:"\201C";position:absolute;right:26px;top:0;font-family:"Fraunces",serif;font-size:160px;line-height:1;color:var(--gold);opacity:.16;pointer-events:none}
+.v-stars{color:var(--gold);font-size:14px;letter-spacing:3px;line-height:1;margin-bottom:14px}
+.v-text{font-family:"Fraunces",serif;font-size:17px;line-height:1.5;flex:1;overflow-wrap:break-word;min-width:0}
+.t-feat .v-text{font-size:clamp(21px,2.3vw,27px);line-height:1.38;letter-spacing:-0.01em;position:relative}
+.hl{font-style:italic;color:var(--plum);font-weight:500}
+.v-who{margin-top:20px;display:flex;align-items:center;gap:12px}
+.v-badge{width:42px;height:42px;border-radius:50%;background:var(--paper-3);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:17px;color:var(--plum);flex:none;overflow:hidden;border:1px solid var(--line)}
+.t-feat .v-badge{width:54px;height:54px}
+.v-badge img{width:100%;height:100%;object-fit:cover}
+.v-name{font-weight:700;font-size:15px}
+.v-src{font-size:12px;color:var(--ink-faint);margin-top:1px}
+.v-dish{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:4px 12px 4px 4px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:var(--ink-soft);width:max-content}
+.v-dish img{width:26px;height:26px;border-radius:50%;object-fit:cover}
+.t-rate{background:linear-gradient(150deg,#5B3E82 0%,#3C2857 100%);border-radius:20px;padding:28px 26px 24px;color:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.t-rate::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 120% at 100% 0%,rgba(198,153,75,0.24),transparent 55%);pointer-events:none}
+.t-rate>*{position:relative;z-index:1}
+.t-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.24em;color:var(--gold-bright)}
+.t-big{font-family:"Fraunces",serif;font-size:clamp(64px,7vw,92px);font-weight:500;line-height:1;margin-top:14px;letter-spacing:-0.03em}
+.t-stars{color:var(--gold-bright);font-size:22px;letter-spacing:3px;line-height:1;margin-top:10px}
+.t-count{margin-top:10px;font-size:14px;color:rgba(255,255,255,.82);flex:1;line-height:1.45}
+.t-link{margin-top:22px;align-self:flex-start;display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:600;font-size:14px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);min-height:44px;padding:0 16px;border-radius:999px;transition:background .3s}
+.t-link:hover{background:rgba(255,255,255,.24)}
+
+/* ===== Visit ===== */
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+.visit h2{font-size:clamp(36px,4.8vw,58px)}
+.hours{margin:26px 0 0;padding:0;list-style:none}
+.hours li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--line-2);font-size:16px}
+.hours li b{font-weight:600}
+.contact-row{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
+.addr{margin-top:26px;font-family:"Fraunces",serif;font-size:clamp(22px,2.4vw,28px);line-height:1.25}
+.addr small{display:block;font-family:"Karla",sans-serif;font-size:14px;color:var(--ink-soft);margin-top:8px}
+.map{margin-top:0;position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.map img{width:100%;aspect-ratio:700/470;object-fit:cover}
+.map a.over{position:absolute;inset:0;display:block;text-decoration:none}
+.map .pin{position:absolute;left:14px;top:14px;background:var(--plum);color:#fff;font-size:12px;font-weight:600;padding:7px 12px;border-radius:999px;pointer-events:none}
+
+.more{margin-top:22px}
+.more-item{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--line-2);font-size:15px;line-height:1.5}
+.more-item b{font-family:"Fraunces",serif;font-weight:500;font-size:19px;letter-spacing:-0.01em}
+.more-item span{color:var(--ink-soft)}
+.more-item a{color:var(--plum)}
+
+/* ===== Footer ===== */
+footer{background:var(--plum-ink);color:var(--on-plum);padding:56px 0 34px}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap}
+.foot-brand{display:flex;align-items:center;gap:14px}
+.foot-brand img{width:48px;height:48px;border-radius:50%}
+.foot-brand .n{font-family:"Fraunces",serif;font-size:24px;color:#fff}
+.foot-brand .s{font-size:13px;color:var(--on-plum-soft);margin-top:2px}
+.foot-links{display:flex;gap:20px;flex-wrap:wrap}
+.foot-links a{color:var(--on-plum);text-decoration:none;font-size:14px;padding:6px 0}
+.foot-links a:hover{color:var(--gold-bright)}
+.foot-note{margin-top:38px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.14);font-size:13px;color:var(--on-plum-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+/* ===== Motion (JS-gated) & a11y ===== */
+html.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.32,.72,0,1),transform .9s cubic-bezier(.32,.72,0,1)}
+html.js .reveal.in{opacity:1;transform:none}
+a:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:8px}
+.skip{position:absolute;left:-9999px;top:10px;z-index:100;background:var(--plum);color:#fff;padding:11px 18px;border-radius:12px;text-decoration:none;font-weight:600}
+.skip:focus{left:16px}
+@media (prefers-reduced-motion:reduce){
+  html.js .reveal{opacity:1;transform:none;transition:none}
+  .hero .a1,.hero .a2,.hero .a3,.hero .a4,.hero-art{animation:none}
+  .feat img,.voice,.tlink,.btn{transition:none}
+  .mobile-overlay,.mobile-overlay a,.hamburger span{transition:none}
+}
+html:not(.js) .nav-links{display:flex}
+html:not(.js) .hamburger{display:none}
+
+/* ===== Responsive ===== */
+@media (max-width:1100px){.hero h1{font-size:clamp(60px,9.5vw,120px)}}
+@media (max-width:940px){
+  .hero{padding-top:116px}
+  .hero-grid{grid-template-columns:1fr;gap:26px}
+  .hero-art{margin-right:0;border-radius:18px;order:-1}
+  .hero-art img{max-height:460px}
+  .board-feats{grid-template-columns:1fr 1fr}
+  .feat.tall{grid-row:auto}
+  .feat.tall img{aspect-ratio:16/10}
+  .story-grid,.room-grid,.visit-grid{grid-template-columns:1fr}
+  .also-grid{grid-template-columns:1fr 1fr}
+  .board{grid-template-columns:1fr;gap:18px}
+  .stage-wrap{position:static}
+  #stage img{aspect-ratio:auto;height:36vh;min-height:220px;max-height:340px}
+  .stage-hint{display:none}
+  .story-pics figure:last-child{margin-top:0}
+  .tgrid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .hamburger{display:grid;place-items:center}
+}
+@media (max-width:560px){
+  .nav{padding:12px}
+  .nav-inner{gap:8px;padding:6px 7px 6px 8px}
+  .brand b{display:none}
+  .hero{padding-top:100px}
+  .hero h1{font-size:clamp(58px,17vw,84px)}
+  .hero-actions{gap:18px}
+  .board-feats{grid-template-columns:1fr}
+  .feat.tall img{aspect-ratio:4/5}
+  .dish{grid-template-columns:64px 1fr}
+  .dish img{width:64px;height:64px}
+  .dish.nopic{padding-left:76px}
+  .more-item{grid-template-columns:1fr;gap:4px}
+  .also-grid{grid-template-columns:1fr}
+  .story-pics{grid-template-columns:1fr 1fr}
+  .tgrid{grid-template-columns:1fr}
+  .t-feat{grid-column:span 1;padding:26px 24px 22px}
+  .t-feat::before{font-size:120px;right:16px}
+}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<a class="skip" href="#menu">Skip to the menu</a>
+
+<nav class="nav" id="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><img src="images/logo.jpg" alt="Popovers Café" width="36" height="36"><b>Popovers Café</b></a>
+    <div class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#story">Our story</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <button class="icon-btn" id="themeBtn" aria-label="Switch between light and dark" title="Light / dark">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>
+    </button>
+    <a class="nav-cta" href="#visit">Find us</a>
+    <button class="icon-btn hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-overlay" id="mobileMenu">
+  <a href="#menu">Menu</a>
+  <a href="#story">Our story</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#visit">Visit</a>
+  <div class="foot">Open daily 7am–3pm · <a href="tel:+19842201577" style="font-family:Karla,sans-serif;font-size:15px;opacity:1;transform:none;padding:0;display:inline">(984) 220-1577</a></div>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow a1">Downtown Apex, North Carolina</span>
+        <h1 class="a2">Come <em>pop</em> in.</h1>
+        <p class="hero-sub a3">Sweet and savory popovers, baked fresh every morning and served warm with house-made butters and jams.</p>
+        <div class="hero-actions a4">
+          <a class="tlink primary" href="#menu">See the menu <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="tlink" href="#visit">Find the café</a>
+        </div>
+        <div class="hero-meta a4"><span><b>Open daily</b> 7am–3pm</span><span><b>219 N Salem St</b>, Suite 103</span></div>
+      </div>
+      <div class="hero-art">
+        <img src="images/hero-interior.jpg" alt="A tall golden popover on a wooden plate, with the café's floral mural and brick wall behind it" width="1500" height="1000" fetchpriority="high" decoding="async">
+        <span class="hero-cap">At the counter, 219 N Salem St</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<!-- THE BOARD -->
+<section class="sec" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The board</span>
+      <h2>Popovers, named after the family.</h2>
+      <p>A splash of batter, a very hot oven, and a shell that crackles when you tear it open. Five savory, four sweet, all served warm.</p>
+    </div>
+    <div class="board">
+      <div class="stage-wrap reveal">
+        <figure class="feat tall" id="stage"><img id="stageImg" src="images/annas.jpg" alt="Anna&rsquo;s Original: a tall popover on a wooden plate, with the floral mural behind" width="1400" height="934" loading="lazy"><figcaption class="lab"><b id="stageName">Anna&rsquo;s Original</b><span id="stageTag">Savory</span></figcaption></figure>
+        <p class="stage-hint">Hover or tap a popover to see it up close.</p>
+      </div>
+      <div class="menu-list reveal">
+      <div class="menu-col">
+        <h3>Savory</h3>
+        <button type="button" class="dish is-active" aria-pressed="true" data-img="images/annas.jpg" data-name="Anna&rsquo;s Original" data-tag="Savory" data-alt="Anna&rsquo;s Original: a tall popover on a wooden plate, with the floral mural behind"><img src="images/thumbs/annas.jpg" alt="" width="84" height="84" loading="lazy"><span class="tx"><span class="n">Anna&rsquo;s Original</span><span class="d">Original popover served with any of our signature butters or jams.</span></span></button>
+        <button type="button" class="dish" aria-pressed="false" data-img="images/pop-savory.jpg" data-name="Mama Mia" data-tag="Savory" data-alt="The Mama Mia, split to show spinach, sun-dried tomato and gruyère"><img src="images/thumbs/pop-savory.jpg" alt="" width="84" height="84" loading="lazy"><span class="tx"><span class="n">Mama Mia</span><span class="d">Spinach, sun-dried tomato and gruyère cheese.</span></span></button>
+        <button type="button" class="dish" aria-pressed="false" data-img="images/popovers-pan.jpg" data-name="Massimo" data-tag="Savory" data-alt="The Massimo: jalapeño and white cheddar popovers in the pan, with honey butter"><img src="images/thumbs/popovers-pan.jpg" alt="" width="84" height="84" loading="lazy"><span class="tx"><span class="n">Massimo</span><span class="d">Jalapeño pepper and white cheddar cheese, served with our signature honey butter.</span></span></button>
+        <button type="button" class="dish" aria-pressed="false" data-img="images/pantry.jpg" data-name="Lincoln" data-tag="Savory" data-alt="The Lincoln: popovers with gouda and smoked bacon, served with herb butter and raspberry jam"><img src="images/thumbs/pantry.jpg" alt="" width="84" height="84" loading="lazy"><span class="tx"><span class="n">Lincoln</span><span class="d">Anna&rsquo;s Original with gouda cheese and smoked bacon crumbles.</span></span></button>
+        <button type="button" class="dish" aria-pressed="false" data-img="images/juliette-real.jpg" data-name="Juliette" data-tag="Savory" data-alt="The Juliette: Mama Mia topped with a poached egg"><img src="images/thumbs/juliette-real.jpg" alt="" width="84" height="84" loading="lazy"><span class="tx"><span class="n">Juliette</span><span class="d">Mama Mia with a poached egg.</span></span></button>
+      </div>
+      <div class="menu-col">
+        <h3>Sweet</h3>
+        <button type="button" class="dish" aria-pressed="false" data-img="images/belle-real.jpg" data-name="Belle" data-tag="Sweet" data-alt="The Belle: bourbon caramel apple with apple slices"><img src="images/thumbs/belle-real.jpg" alt="" width="84" height="84" loading="lazy"><span class="tx"><span class="n">Belle</span><span class="d">Bourbon caramel apple filling.</span></span></button>
+        <button type="button" class="dish" aria-pressed="false" data-img="images/foster-real.jpg" data-name="Foster" data-tag="Sweet" data-alt="The Foster: dark chocolate popover with vanilla filling"><img src="images/thumbs/foster-real.jpg" alt="" width="84" height="84" loading="lazy"><span class="tx"><span class="n">Foster</span><span class="d">Dark chocolate, served with fresh vanilla-infused filling.</span></span></button>
+        <button type="button" class="dish" aria-pressed="false" data-img="images/pippa-real.jpg" data-name="Pippa" data-tag="Sweet" data-alt="The Pippa: blueberry lemon, split open"><img src="images/thumbs/pippa-real.jpg" alt="" width="84" height="84" loading="lazy"><span class="tx"><span class="n">Pippa</span><span class="d">Blueberry lemon, served with fresh vanilla-infused filling.</span></span></button>
+        <button type="button" class="dish" aria-pressed="false" data-img="images/pop-bacon.jpg" data-name="Cole" data-tag="Sweet" data-alt="The Cole: a coffee popover with hazelnut coffee-infused vanilla filling, on a wooden plate"><img src="images/thumbs/pop-bacon.jpg" alt="" width="84" height="84" loading="lazy"><span class="tx"><span class="n">Cole</span><span class="d">Mild coffee flavor, served with hazelnut coffee&ndash;infused vanilla filling.</span></span></button>
+        <div class="menu-note"><b>Butters &amp; jams, made in-house</b>Every popover comes with the signature whipped butters and jams from the counter — the honey butter is the one people ask for. Ask what&rsquo;s on today.</div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ALSO ON THE BOARD -->
+<section class="sec also">
+  <div class="wrap">
+    <div class="also-head reveal">
+      <span class="eyebrow">Also on the board</span>
+      <h2>Coffee, tea, juices and something light.</h2>
+      <p>Pourover brewed at the table, Turkish black tea by the glass, fresh-squeezed juice — and a few plates to go with a warm popover.</p>
+    </div>
+    <div class="also-grid">
+      <div class="also-col reveal">
+        <h3>Coffee &amp; tea</h3>
+        <ul>
+          <li>Table-side pourover coffee</li>
+          <li>French press coffee</li>
+          <li>Turkish black tea</li>
+          <li>Ceylon green tea</li>
+          <li>Whipped honey coffee</li>
+          <li>Iced Greek coffee</li>
+          <li>Summer Energy Spritzer</li>
+        </ul>
+        <p class="also-note">Cups: 12 oz regular · 20 oz large</p>
+      </div>
+      <div class="also-col reveal">
+        <h3>Juices &amp; more</h3>
+        <ul>
+          <li>Fresh-squeezed orange juice</li>
+          <li>Carrot, orange &amp; ginger juice</li>
+          <li>Home-brew iced tea</li>
+          <li>Bottled soda, milk &amp; juices</li>
+        </ul>
+        <h3 class="mt">Desserts</h3>
+        <ul><li>Cheesecake — plain, strawberry, raspberry or blueberry</li></ul>
+      </div>
+      <div class="also-col reveal">
+        <h3>Light options</h3>
+        <ul class="desc">
+          <li><b>Landon&rsquo;s Overnight Oats</b><span>Made in house.</span></li>
+          <li><b>Ruby&rsquo;s Fresh Mixed Fruit Bowl</b><span>Seasonal fresh fruit.</span></li>
+          <li><b>Spinach Salad</b><span>Summer-fresh spinach leaves with apples, strawberries, feta cheese, blueberries and raspberry vinaigrette.</span></li>
+          <li><b>Spanakopita</b><span>Greek spinach pie with feta cheese.</span></li>
+        </ul>
+      </div>
+      <figure class="also-pic reveal">
+        <img src="images/barista.jpg" alt="Overnight oats, a fresh fruit cup and a glass of tea on gold stands at the counter" width="1500" height="1465" loading="lazy">
+        <figcaption>Landon&rsquo;s overnight oats, Ruby&rsquo;s fruit bowl and a glass of tea, at the counter.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="sec story" id="story">
+  <div class="wrap">
+    <div class="story-grid">
+      <div class="reveal">
+        <img class="seal" src="images/logo.jpg" alt="Popovers Café monogram" width="104" height="104" loading="lazy">
+        <span class="eyebrow">Our story</span>
+        <h2>A family, a hot oven, and Grandma Anna Clare&rsquo;s recipe.</h2>
+        <p class="lead">Juliette grew up in upstate New York making popovers with her grandmother, Anna Clare, on weekend mornings. Mustafa came from Turkey with a tea blend of his own. Together they opened Popovers Café on North Salem Street.</p>
+        <p class="copy">Every popover on the board is named after someone in the family — the original for Grandma Anna Clare, the rest for the kids. Their son Landon — a Culinary Institute of America pastry graduate — runs the kitchen; on most mornings you&rsquo;ll find a few more of the family at the counter.</p>
+        <blockquote class="quote">&ldquo;It has a warm family meaning for me.&rdquo;<cite>Juliette Ozturk, co-owner</cite></blockquote>
+      </div>
+      <div class="story-pics reveal">
+        <figure><img src="images/owners.jpg" alt="Juliette and Mustafa Ozturk, smiling, in front of the café's floral mural" width="900" height="1125" loading="lazy"><figcaption>Juliette and Mustafa Ozturk.</figcaption></figure>
+        <figure><img src="images/mustafa.jpg" alt="The Ozturk family with neighbors and the Apex Chamber in front of the café's floral mural at the ribbon cutting" width="1200" height="1330" loading="lazy"><figcaption>Ribbon cutting, March 2026 — with neighbors, the Apex Chamber and Mayor Jacques Gilbert.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOM -->
+<section class="sec room">
+  <div class="wrap">
+    <div class="room-grid">
+      <img class="reveal" src="images/interior-wide.jpg" alt="The dining room: velvet chairs, wood tables and a large floral mural" width="1066" height="1600" loading="lazy">
+      <div class="reveal">
+        <span class="eyebrow">The room</span>
+        <h2>A warm corner of downtown Apex.</h2>
+        <p>Exposed brick, a floral mural the length of the wall, velvet chairs and fresh flowers on the tables. Come for a popover, stay for the second glass of tea.</p>
+        <a class="tlink" href="#visit">Hours &amp; directions <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Kind words</span>
+      <h2>Loved in downtown Apex.</h2>
+      <p class="voices-sub">Real reviews, quoted from Google — about the people, the popovers, and quite a lot about the Turkish tea.</p>
+    </div>
+    <div class="tgrid">
+      <div class="t-rate reveal">
+        <span class="t-eyebrow">Google rating</span>
+        <div class="t-big">4.9</div>
+        <div class="t-stars" aria-hidden="true">★★★★★</div>
+        <div class="t-count">92 reviews on Google as of Sept 10, 2026. Excerpts below are quoted as written.</div>
+        <a class="t-link" href="https://www.google.com/maps?cid=3043431755364335841" target="_blank" rel="noopener">Read them all on Google ↗</a>
+      </div>
+      <div class="voice t-feat reveal">
+        <div class="v-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="v-text">The newest gem of downtown Apex! Having been multiple times I can honestly say: the customer service is never lacking, the popovers are perfectly cooked every time, and the Turkish tea is, without a doubt, <em class="hl">the best tea on earth.</em></p>
+        <div class="v-who"><span class="v-badge"><img src="images/reviewers/nina-rossi.png" alt="" width="54" height="54" loading="lazy"></span><div><div class="v-name">Nina Rossi</div><div class="v-src">Google review · Local Guide</div></div></div>
+      </div>
+      <div class="voice reveal">
+        <div class="v-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="v-text">&ldquo;I saw another reviewer say this place is <em class="hl">a gem in Apex, and it truly IS.</em> The food is delicious, their drinks are great. Customer service is 5 Star. We didn&rsquo;t know we liked Turkish tea as much as we do. We will definitely be coming back and recommending them to everyone!&rdquo;</p>
+        <div class="v-who"><span class="v-badge"><img src="images/reviewers/jesus-cuevas.png" alt="" width="42" height="42" loading="lazy"></span><div><div class="v-name">Jesus Cuevas</div><div class="v-src">Google review · Local Guide</div></div></div>
+      </div>
+      <div class="voice reveal">
+        <div class="v-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="v-text">&ldquo;<em class="hl">Excellent, just excellent.</em> The popovers are desserts, and they have specialty coffee offerings that are more premium than the nearby common grounds. Even the chairs are really nice velvety material and the table flowers were fresh!!&rdquo;</p>
+        <div class="v-who"><span class="v-badge"><img src="images/reviewers/nathan-vey.png" alt="" width="42" height="42" loading="lazy"></span><div><div class="v-name">Nathan Vey</div><div class="v-src">Google review · Local Guide</div></div></div>
+      </div>
+      <div class="voice reveal">
+        <div class="v-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="v-text">&ldquo;I really enjoyed this cafe. It has <em class="hl">a very quiet and peaceful atmosphere,</em> making it a great place to relax. The service was good, and the staff were polite and kind. We ordered the Foster popovers with Turkish black tea, and they paired&hellip;&rdquo;</p>
+        <span class="v-dish"><img src="images/thumbs/foster-real.jpg" alt="" width="26" height="26" loading="lazy"> They ordered the Foster</span>
+        <div class="v-who"><span class="v-badge"><img src="images/reviewers/ali-marjani.png" alt="" width="42" height="42" loading="lazy"></span><div><div class="v-name">Ali Marjani</div><div class="v-src">Google review · Local Guide</div></div></div>
+      </div>
+      <div class="voice reveal">
+        <div class="v-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="v-text">&ldquo;&hellip;We tried all the above and enjoyed every bite. My frothed coffee was delicious along with the tasty popovers. Service was friendly and attentive. My wife and I had a fun conversation with <em class="hl">the owner&rsquo;s 6 year old son, who even brought us water refills.</em>&rdquo;</p>
+        <div class="v-who"><span class="v-badge"><img src="images/reviewers/charles-crosier.png" alt="" width="42" height="42" loading="lazy"></span><div><div class="v-name">Charles Crosier</div><div class="v-src">Google review · Local Guide</div></div></div>
+      </div>
+      <div class="voice reveal">
+        <div class="v-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="v-text">&ldquo;&hellip;I didn&rsquo;t realize the varieties you could have (they have 10 on their menu — <em class="hl">each named for one of their 10 kids</em>). The popovers were delicious and the Turkish tea divine. The owner and several of his sons were working and such friendly people and fantastic service.&rdquo;</p>
+        <div class="v-who"><span class="v-badge">S</span><div><div class="v-name">Shane Bazer</div><div class="v-src">Google review · Local Guide</div></div></div>
+      </div>
+      <div class="voice reveal">
+        <div class="v-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="v-text">&ldquo;Everything about our visit to Popovers Cafe was amazing! The Lincoln Popover that we ordered was <em class="hl">light, crispy, and delicious.</em> The tea came in an adorable teapot and the atmosphere was so aesthetically pleasing and cozy.&rdquo;</p>
+        <span class="v-dish"><img src="images/thumbs/pantry.jpg" alt="" width="26" height="26" loading="lazy"> They ordered the Lincoln</span>
+        <div class="v-who"><span class="v-badge">M</span><div><div class="v-name">Madelyn Frederick</div><div class="v-src">Google review</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- VISIT -->
+<section class="sec visit" id="visit">
+  <div class="wrap">
+    <div class="visit-grid">
+      <div class="reveal">
+        <span class="eyebrow">Visit</span>
+        <h2>We save the warm ones for you.</h2>
+        <p class="addr">219 N Salem St, Suite 103<br>Apex, NC 27502<small>Inside the Salem Street Promenade, downtown Apex. Park in the Apex parking lot — the café is a few steps away.</small></p>
+        <ul class="hours">
+          <li><span>Monday – Friday</span><b>7:00 am – 3:00 pm</b></li>
+          <li><span>Saturday</span><b>7:00 am – 3:00 pm</b></li>
+          <li><span>Sunday</span><b>7:00 am – 3:00 pm</b></li>
+        </ul>
+        <div class="contact-row">
+          <a class="btn solid" href="tel:+19842201577">Call (984) 220-1577</a>
+          <a class="btn" href="sms:+19842201577">Text us</a>
+          <a class="btn" href="mailto:mustafa@popoverscafe.com">Email us</a>
+          <a class="btn" href="https://www.instagram.com/popoverscafe/" target="_blank" rel="noopener">@popoverscafe</a>
+        </div>      </div>
+
+      <div class="reveal">
+        <div class="map">
+          <img src="images/map.png" alt="Map of downtown Apex showing Popovers Café at 219 N Salem Street" width="700" height="470" loading="lazy">
+          <span class="pin">Popovers Café</span>
+          <a class="over" href="https://www.google.com/maps/dir/?api=1&destination=219+N+Salem+St+Suite+103+Apex+NC+27502" target="_blank" rel="noopener" aria-label="Get directions to Popovers Café in Google Maps"></a>
+        </div>
+        <div class="more">
+          <div class="more-item"><b>Events</b><span>We&rsquo;re always hosting fun and calming events in the café — pop in, or schedule one of your own. Sundays after church: light pastries, tea and good conversation.</span></div>
+          <div class="more-item"><b>Ordering ahead</b><span>Call or text us with what you&rsquo;d like and when — we&rsquo;ll have it ready at the counter.</span></div>
+          <div class="more-item"><b>Work with us</b><span>Interested in joining the team? Email <a href="mailto:mustafa@popoverscafe.com">mustafa@popoverscafe.com</a> or call.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer id="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="images/logo.jpg" alt="" width="48" height="48">
+        <div><div class="n">Popovers Café</div><div class="s">Downtown Apex, NC · Open daily 7am–3pm</div></div>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="#menu">Menu</a><a href="#story">Our story</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a><a href="https://www.instagram.com/popoverscafe/" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+    </div>
+    <div class="foot-note">
+      <span>© <span id="yr">2026</span> Popovers Café · 219 N Salem St, Suite 103, Apex, NC 27502 · <a href="tel:+19842201577" style="color:inherit;text-decoration:none">(984) 220-1577</a> · <a href="mailto:mustafa@popoverscafe.com" style="color:inherit;text-decoration:none">mustafa@popoverscafe.com</a></span>
+      <span>Baked fresh every morning.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var y=document.getElementById('yr'); if(y) y.textContent=new Date().getFullYear();
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Theme
+  var root=document.documentElement, tbtn=document.getElementById('themeBtn');
+  try{var s=localStorage.getItem('pc-theme'); if(s) root.setAttribute('data-theme',s);}catch(e){}
+  tbtn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    var next=cur==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('pc-theme',next);}catch(e){}
+  });
+
+  // Scroll reveals (content is visible without JS; the .js class gates the hidden start state)
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(el){io.observe(el);});
+  } else { els.forEach(function(el){el.classList.add('in');}); }
+
+  // Mobile menu: focus moves into the panel, Esc closes, focus returns to the button
+  var ham=document.getElementById('hamburger'), menu=document.getElementById('mobileMenu'), body=document.body;
+  function setMenu(open){
+    body.classList.toggle('menu-open',open);
+    ham.setAttribute('aria-expanded',open?'true':'false');
+    ham.setAttribute('aria-label',open?'Close menu':'Open menu');
+    if(open){ var first=menu.querySelector('a'); if(first) setTimeout(function(){first.focus();},60); } else { ham.focus(); }
+  }
+  ham.addEventListener('click',function(){setMenu(!body.classList.contains('menu-open'));});
+  menu.addEventListener('click',function(e){if(e.target.closest('a')) setMenu(false);});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&body.classList.contains('menu-open')) setMenu(false);});
+  addEventListener('resize',function(){if(innerWidth>940&&body.classList.contains('menu-open')) setMenu(false);});
+
+  // Nav hides on scroll-down, returns on scroll-up (rAF-throttled); always shown while the menu is open
+  var inner=document.querySelector('.nav-inner'), last=0, ticking=false, shown=true;
+  function onScroll(){
+    var yy=window.scrollY, want=body.classList.contains('menu-open')||!(yy>last&&yy>220);
+    if(want!==shown){shown=want;inner.style.transform=shown?'translateY(0)':'translateY(-150%)';}
+    last=yy; ticking=false;
+  }
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
+
+  // Menu rows drive the big photo ("stage")
+  var stageImg=document.getElementById('stageImg'), stageName=document.getElementById('stageName'), stageTag=document.getElementById('stageTag'), stage=document.getElementById('stage');
+  if(stageImg){
+    var rows=document.querySelectorAll('.dish[data-img]');
+    var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+    function mobile(){return window.innerWidth<=940;}
+    function show(r){
+      rows.forEach(function(x){x.classList.remove('is-active');x.setAttribute('aria-pressed','false');});
+      r.classList.add('is-active'); r.setAttribute('aria-pressed','true');
+      var src=r.getAttribute('data-img');
+      if(stageImg.getAttribute('src')===src) return;
+      var pre=new Image();
+      pre.onload=function(){
+        stageImg.style.opacity='0';
+        setTimeout(function(){
+          stageImg.src=src; stageImg.alt=r.getAttribute('data-alt')||'';
+          stageName.textContent=r.getAttribute('data-name'); stageTag.textContent=r.getAttribute('data-tag');
+          stageImg.style.opacity='1';
+        }, reduce?0:200);
+      };
+      pre.src=src;
+    }
+    rows.forEach(function(r){
+      if(fine){ r.addEventListener('mouseenter',function(){ if(!mobile()) show(r); }); r.addEventListener('focus',function(){ if(!mobile()) show(r); }); }
+      r.addEventListener('click',function(){
+        if(!mobile()){ show(r); return; }
+        // on small screens the photo opens inline, under the row you tapped
+        var wasOpen=r.classList.contains('open');
+        rows.forEach(function(x){x.classList.remove('open');x.setAttribute('aria-expanded','false');});
+        if(wasOpen) return;
+        if(!r.querySelector('.big')){ var im=document.createElement('img'); im.className='big'; im.src=r.getAttribute('data-img'); im.alt=r.getAttribute('data-alt')||''; im.width=1200; im.height=900; r.appendChild(im); }
+        r.classList.add('open'); r.setAttribute('aria-expanded','true');
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
